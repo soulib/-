@@ -1,0 +1,30 @@
+#include <gtest/gtest.h>
+#include "main.cpp"
+
+// Тесты для calculate_min_points
+TEST(CalculateMinPointsTest, MinPointsTest) {
+    EXPECT_EQ(calculate_min_points(2), 5);
+    EXPECT_EQ(calculate_min_points(36), 6);
+}
+
+// Тесты для calculate_max_points
+TEST(CalculateMaxPointsTest, MaxPointsTest) {
+    EXPECT_EQ(calculate_max_points(2), 12);
+    EXPECT_EQ(calculate_max_points(36), 216);
+}
+
+// Тесты для main_algorithm
+TEST(MainAlgorithmTest, AlgorithmTest) {
+    auto [min_points_2, max_points_2] = main_algorithm(2);
+    EXPECT_EQ(min_points_2, 5);
+    EXPECT_EQ(max_points_2, 12);
+    
+    auto [min_points_36, max_points_36] = main_algorithm(36);
+    EXPECT_EQ(min_points_36, 6);
+    EXPECT_EQ(max_points_36, 216);
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
