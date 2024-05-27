@@ -1,0 +1,45 @@
+#include <iostream>
+#include <limits>
+
+// Функция для вычисления минимального количества очков второго игрока
+long long calculate_min_points(long long n) {
+    long long min_points = LLONG_MAX;
+    for (long long k = 1; k <= n; ++k) {
+        long long points = 7 * k - n;
+        if (points < min_points) {
+            min_points = points;
+        }
+    }
+    return min_points;
+}
+
+// Функция для вычисления максимального количества очков второго игрока
+long long calculate_max_points(long long n) {
+    long long max_points = LLONG_MIN;
+    for (long long k = 1; k <= n; ++k) {
+        long long points = 7 * k - n;
+        if (points > max_points) {
+            max_points = points;
+        }
+    }
+    return max_points;
+}
+
+// Основная функция
+std::pair<long long, long long> main_algorithm(long long n) {
+    long long min_points = calculate_min_points(n);
+    long long max_points = calculate_max_points(n);
+    return {min_points, max_points};
+}
+
+int main() {
+    long long n;
+    std::cout << "Enter the points for the first player: ";
+    std::cin >> n;
+
+    auto [min_points, max_points] = main_algorithm(n);
+    std::cout << "Minimum points for the second player: " << min_points << std::endl;
+    std::cout << "Maximum points for the second player: " << max_points << std::endl;
+
+    return 0;
+}
