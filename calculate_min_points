@@ -1,0 +1,10 @@
+int calculate_min_points(long long n) {
+    long long min_points = LLONG_MAX;
+    for (long long k = 1; k <= n; ++k) {
+        long long points = 7 * k - n;
+        if (points < min_points) {
+            min_points = points;
+        }
+    }
+    return min_points;
+}
